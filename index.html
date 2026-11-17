@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saffron Row – Clothing for every day</title>
+<meta name="description" content="Saffron Row makes everyday clothing in strong colour: tees, hoodies, trousers and jackets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#1B2250; --saffron:#F2A900; --paper:#F4F6FB; --ink:#10131F; --rose:#E9B8B0; --moss:#3F5B4A; --line:#d5d9e6;
+  --display:'Bricolage Grotesque','Arial Black',Arial,sans-serif; --body:'DM Sans',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:20;background:var(--indigo);color:var(--paper)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:var(--display);font-weight:800;font-size:22px;text-decoration:none;letter-spacing:-.5px}
+.logo b{color:var(--saffron)}
+nav{display:flex;gap:22px;align-items:center}
+nav a{text-decoration:none;font-size:15px}
+nav a:hover{color:var(--saffron)}
+.cartbtn{background:var(--saffron);color:var(--ink);border:0;border-radius:999px;padding:8px 16px;font:700 14px var(--body);cursor:pointer}
+.hero{background:var(--indigo);color:var(--paper);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;padding-top:56px;padding-bottom:56px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(52px,10vw,132px);line-height:.88;letter-spacing:-3px}
+.hero h1 span{display:block;color:var(--saffron)}
+.hero p{max-width:44ch;margin:24px 0;font-size:18px;color:#c9d0ea}
+.btn{display:inline-block;background:var(--saffron);color:var(--ink);font:700 16px var(--body);padding:14px 26px;border-radius:999px;text-decoration:none;border:0;cursor:pointer}
+.btn:hover{background:#ffc233}
+.stack{position:relative;height:380px}
+.stack svg{position:absolute;width:210px;height:auto}
+.stack .a{left:0;top:30px;transform:rotate(-8deg)}
+.stack .b{left:120px;top:0;transform:rotate(4deg)}
+.stack .c{left:60px;top:170px;transform:rotate(-2deg)}
+.strip{background:var(--saffron);color:var(--ink);font-weight:700}
+.strip .wrap{display:flex;gap:28px;flex-wrap:wrap;justify-content:space-between;padding-top:14px;padding-bottom:14px;font-size:15px}
+section{padding:64px 0}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,5vw,52px);letter-spacing:-1.5px;line-height:1}
+.sub{color:#4a5070;margin-top:10px;max-width:54ch}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0}
+.tab{border:2px solid var(--indigo);background:transparent;color:var(--indigo);border-radius:999px;padding:8px 18px;font:700 14px var(--body);cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--indigo);color:var(--paper)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.art{display:grid;place-items:center;height:250px}
+.art svg{width:150px;height:auto}
+.info{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.name{font-family:var(--display);font-weight:800;font-size:19px;line-height:1.15}
+.price{font-weight:700}
+.tag{font-size:13px;color:#5a6080}
+select{font:500 14px var(--body);padding:8px;border:1px solid var(--line);border-radius:4px;background:#fff;width:100%}
+.add{margin-top:auto;background:var(--indigo);color:var(--paper);border:0;border-radius:4px;padding:11px;font:700 15px var(--body);cursor:pointer}
+.add:hover{background:#2a3375}
+.story{background:var(--rose)}
+.story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.story p{font-size:18px;max-width:52ch;margin-bottom:14px}
+.promises{display:grid;gap:14px}
+.promises div{background:var(--paper);padding:18px;border-left:6px solid var(--indigo)}
+.promises b{font-family:var(--display);font-size:18px}
+footer{background:var(--ink);color:#aeb4d0;padding:40px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
+footer a{color:var(--saffron)}
+#drawer{position:fixed;top:0;right:0;height:100%;width:min(400px,100%);background:#fff;z-index:40;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-8px 0 30px rgba(0,0,0,.25)}
+#drawer.open{transform:none}
+#drawer header{position:static;height:auto}
+.dh{background:var(--indigo);color:var(--paper);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:800;font-size:20px}
+.dh button{background:none;border:0;color:var(--paper);font-size:28px;cursor:pointer;line-height:1}
+#items{flex:1;overflow:auto;padding:12px 20px}
+.item{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty button{width:28px;height:28px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;font-weight:700}
+.empty{padding:30px 0;color:#5a6080}
+.foot{padding:16px 20px;border-top:1px solid var(--line);display:grid;gap:10px}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:18px}
+.foot input{font:500 15px var(--body);padding:10px;border:1px solid var(--line);border-radius:4px;width:100%}
+.foot .btn{width:100%;text-align:center}
+.note{font-size:12px;color:#5a6080}
+#veil{position:fixed;inset:0;background:rgba(16,19,31,.5);z-index:30;display:none}
+#veil.open{display:block}
+@media(max-width:800px){
+  .hero .wrap,.story .wrap{grid-template-columns:1fr}
+  .stack{height:300px}.stack svg{width:160px}.stack .b{left:100px}.stack .c{top:130px}
+  nav a.hide{display:none}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#drawer{transition:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="tee" viewBox="0 0 120 120"><path d="M32 14 46 8q14 12 28 0l14 6 22 22-14 12-10-10v68H34V38L24 48 10 36z"/></symbol>
+  <symbol id="hood" viewBox="0 0 120 120"><path d="M30 20 48 8q12 10 24 0l18 12 20 28-14 10-8-8v70H32V50l-8 8L10 48z"/><path d="M48 8q12 24 24 0" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="3"/></symbol>
+  <symbol id="pants" viewBox="0 0 120 120"><path d="M34 8h52l6 108H66L60 46l-6 70H28z"/></symbol>
+  <symbol id="coat" viewBox="0 0 120 120"><path d="M30 12 48 6l12 10 12-10 18 6 20 30-12 10-8-8v76H30V44l-8 8L10 42z"/><path d="M60 16v100" stroke="rgba(0,0,0,.25)" stroke-width="3"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Saffron Row home">Saffron<b>Row</b></a>
+    <nav>
+      <a class="hide" href="#shop">Shop</a>
+      <a class="hide" href="#story">Our story</a>
+      <a class="hide" href="#contact">Contact</a>
+      <button class="cartbtn" id="openCart" aria-label="Open cart">Cart (<span id="count">0</span>)</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Wear the <span>colour.</span></h1>
+      <p>Everyday tees, hoodies, trousers and jackets in saffron, indigo and rose. Made to last past one season.</p>
+      <a class="btn" href="#shop">Shop the collection</a>
+    </div>
+    <div class="stack" aria-hidden="true">
+      <svg class="a" viewBox="0 0 120 120" fill="#F2A900"><use href="#hood"/></svg>
+      <svg class="b" viewBox="0 0 120 120" fill="#E9B8B0"><use href="#tee"/></svg>
+      <svg class="c" viewBox="0 0 120 120" fill="#F4F6FB"><use href="#pants"/></svg>
+    </div>
+  </div>
+</div>
+<div class="strip"><div class="wrap"><span>Free delivery over Rs 5,000</span><span>7-day easy returns</span><span>Cash on delivery available</span></div></div>
+
+<section id="shop">
+  <div class="wrap">
+    <h2>The collection</h2>
+    <p class="sub">Eight pieces, each in one strong colour. Pick a size and add it to your cart.</p>
+    <div class="tabs" role="group" aria-label="Filter products" id="tabs"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <div>
+      <h2>Clothes that earn their place in your wardrobe.</h2>
+      <p class="sub" style="color:#3b2e2c">We keep the range small so every piece gets the right fabric, the right fit and a colour you won’t see on everyone else.</p>
+    </div>
+    <div class="promises">
+      <div><b>Heavy cotton</b><br>240 gsm fabric that keeps its shape after many washes.</div>
+      <div><b>Fit you can trust</b><br>Each product page lists sizes, so you order once.</div>
+      <div><b>Simple returns</b><br>Not right? Send it back within 7 days.</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div><b style="color:#fff">Saffron Row</b><br>Orders and questions: <a id="waLink" href="#">WhatsApp us</a></div>
+    <div>© <span id="yr"></span> Saffron Row. All rights reserved.</div>
+  </div>
+</footer>
+
+<div id="veil"></div>
+<aside id="drawer" aria-label="Shopping cart" aria-hidden="true">
+  <div class="dh">Your cart <button id="closeCart" aria-label="Close cart">×</button></div>
+  <div id="items"></div>
+  <div class="foot">
+    <div class="total"><span>Total</span><span id="total">Rs 0</span></div>
+    <input id="cname" placeholder="Your name" autocomplete="name">
+    <input id="caddr" placeholder="Delivery address and phone" autocomplete="street-address">
+    <button class="btn" id="checkout">Place order on WhatsApp</button>
+    <p class="note">Your order opens as a WhatsApp message to us. We confirm the price and delivery, and you pay on delivery or by transfer.</p>
+  </div>
+</aside>
+
+<script>
+/* ===== EDIT THESE ===== */
+var CONFIG = {
+  currency: 'Rs ',
+  whatsapp: '9779800000000'   /* your number with country code, no + or spaces */
+};
+var PRODUCTS = [
+  {id:1,name:'Saffron Boxy Tee',cat:'Tops',price:1800,bg:'#1B2250',fill:'#F2A900',shape:'tee',tag:'240 gsm cotton'},
+  {id:2,name:'Indigo Heavy Tee',cat:'Tops',price:1800,bg:'#F2A900',fill:'#1B2250',shape:'tee',tag:'240 gsm cotton'},
+  {id:3,name:'Rose Everyday Tee',cat:'Tops',price:1600,bg:'#3F5B4A',fill:'#E9B8B0',shape:'tee',tag:'Soft combed cotton'},
+  {id:4,name:'Saffron Hoodie',cat:'Outerwear',price:4200,bg:'#1B2250',fill:'#F2A900',shape:'hood',tag:'Brushed fleece inside'},
+  {id:5,name:'Moss Zip Jacket',cat:'Outerwear',price:5600,bg:'#E9B8B0',fill:'#3F5B4A',shape:'coat',tag:'Water-resistant shell'},
+  {id:6,name:'Indigo Work Trousers',cat:'Bottoms',price:3600,bg:'#F2A900',fill:'#1B2250',shape:'pants',tag:'Straight, mid-rise'},
+  {id:7,name:'Bone Relaxed Trousers',cat:'Bottoms',price:3400,bg:'#1B2250',fill:'#F4F6FB',shape:'pants',tag:'Relaxed leg'},
+  {id:8,name:'Rose Oversized Hoodie',cat:'Outerwear',price:4400,bg:'#3F5B4A',fill:'#E9B8B0',shape:'hood',tag:'Oversized fit'}
+];
+/* ====================== */
+
+var cart = [];
+try { cart = JSON.parse(localStorage.getItem('sr_cart') || '[]'); } catch(e) { cart = []; }
+function save(){ try { localStorage.setItem('sr_cart', JSON.stringify(cart)); } catch(e) {} }
+function money(n){ return CONFIG.currency + n.toLocaleString('en-US'); }
+function $(id){ return document.getElementById(id); }
+
+var cats = ['All','Tops','Bottoms','Outerwear'], active = 'All';
+function renderTabs(){
+  $('tabs').innerHTML = cats.map(function(c){
+    return '<button class="tab" aria-pressed="'+(c===active)+'" data-c="'+c+'">'+c+'</button>';
+  }).join('');
+  Array.prototype.forEach.call(document.querySelectorAll('.tab'), function(b){
+    b.onclick = function(){ active = b.dataset.c; renderTabs(); renderGrid(); };
+  });
+}
+function renderGrid(){
+  $('grid').innerHTML = PRODUCTS.filter(function(p){ return active==='All' || p.cat===active; }).map(function(p){
+    return '<article class="card"><div class="art" style="background:'+p.bg+'"><svg viewBox="0 0 120 120" fill="'+p.fill+'" role="img" aria-label="'+p.name+'"><use href="#'+p.shape+'"/></svg></div>'+
+      '<div class="info"><div class="row"><span class="name">'+p.name+'</span><span class="price">'+money(p.price)+'</span></div>'+
+      '<span class="tag">'+p.tag+'</span>'+
+      '<label class="tag" for="s'+p.id+'">Size</label><select id="s'+p.id+'"><option>S</option><option selected>M</option><option>L</option><option>XL</option></select>'+
+      '<button class="add" data-id="'+p.id+'">Add to cart</button></div></article>';
+  }).join('');
+  Array.prototype.forEach.call(document.querySelectorAll('.add'), function(b){
+    b.onclick = function(){ addToCart(+b.dataset.id, $('s'+b.dataset.id).value); b.textContent = 'Added'; setTimeout(function(){ b.textContent = 'Add to cart'; }, 900); };
+  });
+}
+function addToCart(id, size){
+  var f = cart.filter(function(i){ return i.id===id && i.size===size; })[0];
+  if (f) f.qty++; else cart.push({id:id,size:size,qty:1});
+  save(); renderCart();
+}
+function change(idx, d){
+  cart[idx].qty += d;
+  if (cart[idx].qty < 1) cart.splice(idx,1);
+  save(); renderCart();
+}
+function prod(id){ return PRODUCTS.filter(function(p){ return p.id===id; })[0]; }
+function renderCart(){
+  var n = 0, t = 0;
+  cart.forEach(function(i){ n += i.qty; t += i.qty * prod(i.id).price; });
+  $('count').textContent = n;
+  $('total').textContent = money(t);
+  $('items').innerHTML = cart.length ? cart.map(function(i, idx){
+    var p = prod(i.id);
+    return '<div class="item"><div><b>'+p.name+'</b><br><span class="tag">Size '+i.size+' · '+money(p.price)+'</span>'+
+      '<div class="qty"><button aria-label="Fewer" data-i="'+idx+'" data-d="-1">−</button><span>'+i.qty+'</span><button aria-label="More" data-i="'+idx+'" data-d="1">+</button></div></div>'+
+      '<b>'+money(p.price*i.qty)+'</b></div>';
+  }).join('') : '<p class="empty">Your cart is empty. Add a piece from the collection.</p>';
+  Array.prototype.forEach.call(document.querySelectorAll('.qty button'), function(b){
+    b.onclick = function(){ change(+b.dataset.i, +b.dataset.d); };
+  });
+}
+function openCart(o){
+  $('drawer').classList.toggle('open', o);
+  $('veil').classList.toggle('open', o);
+  $('drawer').setAttribute('aria-hidden', String(!o));
+}
+$('openCart').onclick = function(){ openCart(true); };
+$('closeCart').onclick = $('veil').onclick = function(){ openCart(false); };
+document.addEventListener('keydown', function(e){ if (e.key==='Escape') openCart(false); });
+
+$('checkout').onclick = function(){
+  if (!cart.length) { alert('Your cart is empty. Add a piece first.'); return; }
+  var name = $('cname').value.trim(), addr = $('caddr').value.trim();
+  if (!name || !addr) { alert('Enter your name and delivery address so we can send your order.'); return; }
+  var total = 0;
+  var lines = cart.map(function(i){ var p = prod(i.id); total += p.price*i.qty; return '- '+p.name+' (size '+i.size+') x'+i.qty+' = '+money(p.price*i.qty); });
+  var msg = 'New order from '+name+'\n'+lines.join('\n')+'\nTotal: '+money(total)+'\nDelivery: '+addr;
+  window.open('https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(msg), '_blank');
+};
+$('waLink').href = 'https://wa.me/'+CONFIG.whatsapp;
+$('yr').textContent = new Date().getFullYear();
+renderTabs(); renderGrid(); renderCart();
+</script>
+</body>
+</html>
