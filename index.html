@@ -1,272 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Saffron Row – Clothing for every day</title>
-<meta name="description" content="Saffron Row makes everyday clothing in strong colour: tees, hoodies, trousers and jackets.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-:root{
-  --indigo:#1B2250; --saffron:#F2A900; --paper:#F4F6FB; --ink:#10131F; --rose:#E9B8B0; --moss:#3F5B4A; --line:#d5d9e6;
-  --display:'Bricolage Grotesque','Arial Black',Arial,sans-serif; --body:'DM Sans',Arial,sans-serif;
-}
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.55}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-header{position:sticky;top:0;z-index:20;background:var(--indigo);color:var(--paper)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-family:var(--display);font-weight:800;font-size:22px;text-decoration:none;letter-spacing:-.5px}
-.logo b{color:var(--saffron)}
-nav{display:flex;gap:22px;align-items:center}
-nav a{text-decoration:none;font-size:15px}
-nav a:hover{color:var(--saffron)}
-.cartbtn{background:var(--saffron);color:var(--ink);border:0;border-radius:999px;padding:8px 16px;font:700 14px var(--body);cursor:pointer}
-.hero{background:var(--indigo);color:var(--paper);overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center;padding-top:56px;padding-bottom:56px}
-.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(52px,10vw,132px);line-height:.88;letter-spacing:-3px}
-.hero h1 span{display:block;color:var(--saffron)}
-.hero p{max-width:44ch;margin:24px 0;font-size:18px;color:#c9d0ea}
-.btn{display:inline-block;background:var(--saffron);color:var(--ink);font:700 16px var(--body);padding:14px 26px;border-radius:999px;text-decoration:none;border:0;cursor:pointer}
-.btn:hover{background:#ffc233}
-.stack{position:relative;height:380px}
-.stack svg{position:absolute;width:210px;height:auto}
-.stack .a{left:0;top:30px;transform:rotate(-8deg)}
-.stack .b{left:120px;top:0;transform:rotate(4deg)}
-.stack .c{left:60px;top:170px;transform:rotate(-2deg)}
-.strip{background:var(--saffron);color:var(--ink);font-weight:700}
-.strip .wrap{display:flex;gap:28px;flex-wrap:wrap;justify-content:space-between;padding-top:14px;padding-bottom:14px;font-size:15px}
-section{padding:64px 0}
-h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,5vw,52px);letter-spacing:-1.5px;line-height:1}
-.sub{color:#4a5070;margin-top:10px;max-width:54ch}
-.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0}
-.tab{border:2px solid var(--indigo);background:transparent;color:var(--indigo);border-radius:999px;padding:8px 18px;font:700 14px var(--body);cursor:pointer}
-.tab[aria-pressed="true"]{background:var(--indigo);color:var(--paper)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
-.card{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
-.art{display:grid;place-items:center;height:250px}
-.art svg{width:150px;height:auto}
-.info{padding:16px;display:flex;flex-direction:column;gap:10px;flex:1}
-.row{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.name{font-family:var(--display);font-weight:800;font-size:19px;line-height:1.15}
-.price{font-weight:700}
-.tag{font-size:13px;color:#5a6080}
-select{font:500 14px var(--body);padding:8px;border:1px solid var(--line);border-radius:4px;background:#fff;width:100%}
-.add{margin-top:auto;background:var(--indigo);color:var(--paper);border:0;border-radius:4px;padding:11px;font:700 15px var(--body);cursor:pointer}
-.add:hover{background:#2a3375}
-.story{background:var(--rose)}
-.story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.story p{font-size:18px;max-width:52ch;margin-bottom:14px}
-.promises{display:grid;gap:14px}
-.promises div{background:var(--paper);padding:18px;border-left:6px solid var(--indigo)}
-.promises b{font-family:var(--display);font-size:18px}
-footer{background:var(--ink);color:#aeb4d0;padding:40px 0;font-size:14px}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
-footer a{color:var(--saffron)}
-#drawer{position:fixed;top:0;right:0;height:100%;width:min(400px,100%);background:#fff;z-index:40;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-8px 0 30px rgba(0,0,0,.25)}
-#drawer.open{transform:none}
-#drawer header{position:static;height:auto}
-.dh{background:var(--indigo);color:var(--paper);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:800;font-size:20px}
-.dh button{background:none;border:0;color:var(--paper);font-size:28px;cursor:pointer;line-height:1}
-#items{flex:1;overflow:auto;padding:12px 20px}
-.item{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
-.qty{display:flex;align-items:center;gap:8px;margin-top:6px}
-.qty button{width:28px;height:28px;border:1px solid var(--line);background:#fff;border-radius:4px;cursor:pointer;font-weight:700}
-.empty{padding:30px 0;color:#5a6080}
-.foot{padding:16px 20px;border-top:1px solid var(--line);display:grid;gap:10px}
-.total{display:flex;justify-content:space-between;font-weight:700;font-size:18px}
-.foot input{font:500 15px var(--body);padding:10px;border:1px solid var(--line);border-radius:4px;width:100%}
-.foot .btn{width:100%;text-align:center}
-.note{font-size:12px;color:#5a6080}
-#veil{position:fixed;inset:0;background:rgba(16,19,31,.5);z-index:30;display:none}
-#veil.open{display:block}
-@media(max-width:800px){
-  .hero .wrap,.story .wrap{grid-template-columns:1fr}
-  .stack{height:300px}.stack svg{width:160px}.stack .b{left:100px}.stack .c{top:130px}
-  nav a.hide{display:none}
-}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#drawer{transition:none}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saffron Row — Modern Clothing Nepal</title>
+  <meta name="description" content="Premium everyday fashion for women and men in Nepal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #171717;
+      --muted: #686868;
+      --paper: #f8f7f4;
+      --white: #fff;
+      --line: #e7e5e0;
+      --accent: #e4572e;
+      --display: "Manrope", sans-serif;
+      --body: "DM Sans", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--white); color: var(--ink); font-family: var(--body); }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    .container { max-width: 1440px; margin: auto; padding-inline: 28px; }
+    .announce { height: 34px; background: #1b1b1b; color: #fff; font-size: 12px; letter-spacing: .06em; }
+    .announce .container { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .announce-links { display: flex; gap: 20px; }
+    header { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,.96); border-bottom: 1px solid rgba(0,0,0,.08); backdrop-filter: blur(12px); }
+    .nav { height: 76px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+    .nav-menu, .nav-actions { display: flex; align-items: center; gap: 24px; }
+    .nav-menu a { font-size: 14px; font-weight: 600; }
+    .nav-menu a:hover { color: var(--accent); }
+    .logo { font: 800 24px/1 var(--display); letter-spacing: -.8px; text-align: center; }
+    .logo span { color: var(--accent); }
+    .nav-actions { justify-content: flex-end; }
+    .icon-btn { width: 40px; height: 40px; border: 0; background: transparent; display: grid; place-items: center; position: relative; }
+    .icon-btn svg { width: 21px; height: 21px; }
+    .cart-count { position: absolute; right: 1px; top: 1px; min-width: 17px; height: 17px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 10px; display: grid; place-items: center; }
+    .mobile-menu { display: none; }
+    .hero { height: 650px; overflow: hidden; background: #ded8cf; }
+    .hero-inner { height: 100%; display: grid; grid-template-columns: 42% 58%; background: #e5e0d7; }
+    .hero-copy { display: flex; align-items: center; padding: 8%; background: #ece8df; }
+    .hero-copy-inner { max-width: 520px; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+    .hero h1 { margin: 18px 0 20px; font: 800 clamp(48px,6vw,82px)/.96 var(--display); letter-spacing: -5px; }
+    .hero p { max-width: 430px; color: #4f4f4f; font-size: 17px; line-height: 1.7; }
+    .hero-actions { display: flex; gap: 10px; margin-top: 30px; }
+    .btn { min-height: 48px; padding: 0 24px; border: 1px solid var(--ink); display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; transition: .2s; }
+    .btn-dark { background: var(--ink); color: #fff; }
+    .btn-dark:hover { background: var(--accent); border-color: var(--accent); }
+    .btn-light { background: transparent; }
+    .btn-light:hover { background: #fff; }
+    .hero-media { height: 100%; }
+    .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; display: block; }
+    .benefits { border-bottom: 1px solid var(--line); }
+    .benefits .container { height: 74px; display: grid; grid-template-columns: repeat(4,1fr); align-items: center; }
+    .benefit { text-align: center; border-right: 1px solid var(--line); font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .benefit:last-child { border: 0; }
+    section { padding: 82px 0; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 28px; }
+    .section-heading h2 { margin: 8px 0 0; font: 800 clamp(30px,4vw,44px)/1 var(--display); letter-spacing: -2px; }
+    .text-link { border-bottom: 1px solid var(--ink); font-size: 13px; font-weight: 700; padding-bottom: 4px; }
+    .category-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .category { height: 480px; position: relative; overflow: hidden; background: #eee; }
+    .category img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s ease; }
+    .category:hover img { transform: scale(1.025); }
+    .category-copy { position: absolute; left: 24px; bottom: 24px; min-width: 180px; background: #fff; padding: 17px 20px; }
+    .category-copy strong { display: block; font: 800 18px var(--display); }
+    .category-copy span { font-size: 12px; margin-top: 4px; display: block; }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+    .tab { border: 1px solid var(--line); background: #fff; height: 40px; padding: 0 17px; border-radius: 30px; font-size: 13px; font-weight: 600; }
+    .tab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .product-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .product-card { min-width: 0; }
+    .product-image { height: 430px; background: #f2f1ed; position: relative; overflow: hidden; }
+    .product-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .45s ease; }
+    .product-card:hover .product-image img { transform: scale(1.025); }
+    .badge { position: absolute; left: 12px; top: 12px; height: 25px; background: #fff; display: flex; align-items: center; padding: 0 9px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+    .heart { position: absolute; right: 12px; top: 12px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .heart svg { width: 17px; }
+    .quick-add { position: absolute; left: 12px; right: 12px; bottom: 12px; height: 44px; border: 0; background: #fff; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; transform: translateY(58px); transition: .25s; }
+    .product-card:hover .quick-add { transform: translateY(0); }
+    .product-info { padding-top: 14px; display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+    .product-name { font-size: 14px; font-weight: 600; }
+    .product-price { font-size: 14px; font-weight: 700; }
+    .product-meta { grid-column: 1/-1; color: var(--muted); font-size: 12px; }
+    .campaign { padding: 0; }
+    .campaign-inner { display: grid; grid-template-columns: 1fr 1fr; min-height: 540px; background: #1e1e20; color: #fff; }
+    .campaign-copy { display: flex; align-items: center; padding: 8%; }
+    .campaign-copy-inner { max-width: 470px; }
+    .campaign h2 { margin: 14px 0 18px; font: 800 clamp(38px,5vw,68px)/1 var(--display); letter-spacing: -4px; }
+    .campaign p { color: #d2d2d2; line-height: 1.7; }
+    .campaign-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .campaign .btn { margin-top: 22px; border-color: #fff; color: #fff; }
+    .campaign .btn:hover { background: #fff; color: #171717; }
+    .newsletter { background: var(--paper); text-align: center; }
+    .newsletter h2 { margin: 8px 0 10px; font: 800 36px var(--display); letter-spacing: -2px; }
+    .newsletter p { color: var(--muted); }
+    .signup { width: min(520px,100%); height: 52px; margin: 22px auto 0; display: flex; border-bottom: 1px solid var(--ink); }
+    .signup input { flex: 1; border: 0; background: transparent; outline: 0; }
+    .signup button { border: 0; background: transparent; font-weight: 700; }
+    footer { background: #171717; color: #fff; padding: 58px 0 24px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr repeat(3,1fr); gap: 40px; }
+    .footer-brand p { max-width: 290px; color: #aaa; line-height: 1.7; font-size: 14px; }
+    .footer-grid h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .12em; margin: 4px 0 18px; }
+    .footer-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .footer-grid li a { color: #bbb; font-size: 13px; }
+    .copyright { border-top: 1px solid #333; margin-top: 48px; padding-top: 22px; color: #888; font-size: 12px; display: flex; justify-content: space-between; }
+    .shop-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .sort-select { height: 40px; border: 1px solid var(--line); background: #fff; padding: 0 34px 0 12px; color: var(--ink); outline: 0; }
+    .trust-grid { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--line); }
+    .trust-card { min-height: 230px; padding: 38px; border-right: 1px solid var(--line); }
+    .trust-card:last-child { border-right: 0; }
+    .trust-card strong { display: block; margin: 18px 0 8px; font: 800 20px var(--display); }
+    .trust-card p { color: var(--muted); line-height: 1.7; margin: 0; }
+    .trust-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--paper); font-size: 20px; }
+    .faq { border-top: 1px solid var(--line); }
+    .faq-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 70px; }
+    .faq h2 { margin: 8px 0; font: 800 42px/1.05 var(--display); letter-spacing: -2px; }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-item summary { list-style: none; cursor: pointer; padding: 19px 0; font-weight: 700; display: flex; justify-content: space-between; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; font-size: 22px; line-height: 1; }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item p { color: var(--muted); margin: -4px 0 20px; line-height: 1.7; }
+    #searchOverlay { position: fixed; inset: 0; z-index: 60; background: rgba(255,255,255,.98); opacity: 0; visibility: hidden; transition: .25s; }
+    #searchOverlay.open { opacity: 1; visibility: visible; }
+    .search-shell { max-width: 800px; margin: 0 auto; padding: 34px 24px; }
+    .search-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .search-top strong { font: 800 20px var(--display); }
+    .search-close { border: 0; background: transparent; font-size: 32px; }
+    .search-box { display: flex; border-bottom: 2px solid var(--ink); }
+    .search-box input { height: 62px; flex: 1; border: 0; outline: 0; background: transparent; font: 700 28px var(--display); min-width: 0; }
+    .search-box button { border: 0; background: transparent; font-weight: 700; }
+    #searchResults { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 28px; }
+    .search-result { cursor: pointer; }
+    .search-result img { width: 100%; height: 220px; object-fit: cover; background: #eee; }
+    .search-result span { display: block; margin-top: 8px; font-size: 13px; font-weight: 700; }
+    #productModal { position: fixed; z-index: 55; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,.48); opacity: 0; visibility: hidden; transition: .2s; }
+    #productModal.open { opacity: 1; visibility: visible; }
+    .modal-card { width: min(580px,calc(100% - 32px)); background: #fff; display: grid; grid-template-columns: 210px 1fr; padding: 18px; gap: 20px; position: relative; }
+    .modal-card img { width: 100%; height: 290px; object-fit: cover; background: #eee; }
+    .modal-close { position: absolute; right: 10px; top: 8px; border: 0; background: #fff; font-size: 24px; }
+    .modal-info { padding: 28px 18px 10px 0; }
+    .modal-info h3 { margin: 8px 0; font: 800 24px/1.1 var(--display); }
+    .modal-info .modal-price { font-size: 17px; font-weight: 800; }
+    .size-label { display: block; margin: 18px 0 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    .size-options { display: flex; gap: 6px; margin-bottom: 18px; }
+    .size-options button { width: 43px; height: 43px; border: 1px solid var(--line); background: #fff; }
+    .size-options button.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .modal-info .btn { width: 100%; }
+    #toast { position: fixed; z-index: 70; left: 50%; bottom: 24px; transform: translate(-50%,30px); background: var(--ink); color: #fff; padding: 13px 18px; font-size: 13px; opacity: 0; transition: .25s; pointer-events: none; }
+    #toast.show { opacity: 1; transform: translate(-50%,0); }
+    #veil { position: fixed; inset: 0; z-index: 40; background: rgba(0,0,0,.38); opacity: 0; visibility: hidden; transition: .25s; }
+    #veil.open { opacity: 1; visibility: visible; }
+    #drawer { position: fixed; z-index: 50; right: 0; top: 0; width: min(430px,100%); height: 100%; background: #fff; transform: translateX(100%); transition: transform .28s ease; display: flex; flex-direction: column; }
+    #drawer.open { transform: none; }
+    .drawer-head { height: 74px; padding: 0 24px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+    .drawer-head strong { font: 800 20px var(--display); }
+    .drawer-head button { border: 0; background: transparent; font-size: 28px; }
+    #cartItems { flex: 1; overflow: auto; padding: 8px 24px; }
+    .cart-item { display: grid; grid-template-columns: 74px 1fr auto; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .cart-item img { width: 74px; height: 92px; object-fit: cover; background: #eee; }
+    .cart-item-name { font-weight: 700; font-size: 13px; }
+    .cart-item-meta { color: var(--muted); font-size: 12px; margin: 5px 0; }
+    .qty { display: flex; align-items: center; gap: 10px; }
+    .qty button { width: 26px; height: 26px; border: 1px solid var(--line); background: #fff; }
+    .cart-item-price { font-size: 13px; font-weight: 700; }
+    .empty { height: 200px; display: grid; place-items: center; color: var(--muted); }
+    .drawer-foot { border-top: 1px solid var(--line); padding: 18px 24px 24px; }
+    .total { display: flex; justify-content: space-between; font-size: 17px; font-weight: 800; margin-bottom: 14px; }
+    .checkout-fields { display: grid; gap: 8px; margin-bottom: 10px; }
+    .checkout-fields input { height: 42px; border: 1px solid var(--line); padding: 0 12px; outline: 0; }
+    .drawer-foot .btn { width: 100%; }
+    @media (max-width: 1000px) {
+      .nav { grid-template-columns: 1fr auto 1fr; }
+      .nav-menu a { display: none; }
+      .mobile-menu { display: grid; }
+      .hero { height: 560px; }
+      .product-grid { grid-template-columns: repeat(2,1fr); }
+      .product-image { height: 520px; }
+      .category { height: 400px; }
+    }
+    @media (max-width: 680px) {
+      .container { padding-inline: 16px; }
+      .announce-links { display: none; }
+      .announce .container { justify-content: center; }
+      .nav { height: 64px; }
+      .nav-actions .search-btn { display: none; }
+      .logo { font-size: 20px; }
+      .hero { height: 610px; }
+      .hero-inner { grid-template-columns: 1fr; grid-template-rows: 43% 57%; }
+      .hero-copy { grid-row: 2; padding: 32px 24px; }
+      .hero-media { grid-row: 1; }
+      .hero h1 { font-size: 48px; letter-spacing: -3px; margin: 10px 0 12px; }
+      .hero p { font-size: 14px; line-height: 1.5; }
+      .hero-actions { margin-top: 18px; }
+      .btn { min-height: 44px; }
+      .benefits .container { grid-template-columns: 1fr 1fr; height: 84px; row-gap: 10px; }
+      .benefit:nth-child(2) { border: 0; }
+      section { padding: 54px 0; }
+      .section-heading { align-items: center; }
+      .category-grid { grid-template-columns: 1fr; }
+      .category { height: 420px; }
+      .product-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+      .product-image { height: 260px; }
+      .quick-add { transform: none; height: 38px; }
+      .product-name, .product-price { font-size: 12px; }
+      .campaign-inner { grid-template-columns: 1fr; }
+      .campaign-media { height: 380px; order: -1; }
+      .campaign-copy { padding: 50px 24px; }
+      .campaign h2 { font-size: 44px; letter-spacing: -3px; }
+      .shop-toolbar { align-items: start; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .trust-card { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); padding: 28px 24px; }
+      .trust-card:last-child { border-bottom: 0; }
+      .faq-grid { grid-template-columns: 1fr; gap: 24px; }
+      .faq h2 { font-size: 34px; }
+      #searchResults { grid-template-columns: repeat(2,1fr); }
+      .search-result img { height: 180px; }
+      .search-box input { font-size: 20px; }
+      .modal-card { grid-template-columns: 135px 1fr; }
+      .modal-card img { height: 220px; }
+      .modal-info { padding-right: 8px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1/-1; }
+      .copyright { flex-direction: column; gap: 8px; }
+    }
+  </style>
 </head>
 <body>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="tee" viewBox="0 0 120 120"><path d="M32 14 46 8q14 12 28 0l14 6 22 22-14 12-10-10v68H34V38L24 48 10 36z"/></symbol>
-  <symbol id="hood" viewBox="0 0 120 120"><path d="M30 20 48 8q12 10 24 0l18 12 20 28-14 10-8-8v70H32V50l-8 8L10 48z"/><path d="M48 8q12 24 24 0" fill="none" stroke="rgba(0,0,0,.25)" stroke-width="3"/></symbol>
-  <symbol id="pants" viewBox="0 0 120 120"><path d="M34 8h52l6 108H66L60 46l-6 70H28z"/></symbol>
-  <symbol id="coat" viewBox="0 0 120 120"><path d="M30 12 48 6l12 10 12-10 18 6 20 30-12 10-8-8v76H30V44l-8 8L10 42z"/><path d="M60 16v100" stroke="rgba(0,0,0,.25)" stroke-width="3"/></symbol>
-</svg>
-
-<header>
-  <div class="wrap">
-    <a class="logo" href="#top" aria-label="Saffron Row home">Saffron<b>Row</b></a>
-    <nav>
-      <a class="hide" href="#shop">Shop</a>
-      <a class="hide" href="#story">Our story</a>
-      <a class="hide" href="#contact">Contact</a>
-      <button class="cartbtn" id="openCart" aria-label="Open cart">Cart (<span id="count">0</span>)</button>
-    </nav>
-  </div>
-</header>
-
-<main id="top">
-<div class="hero">
-  <div class="wrap">
-    <div>
-      <h1>Wear the <span>colour.</span></h1>
-      <p>Everyday tees, hoodies, trousers and jackets in saffron, indigo and rose. Made to last past one season.</p>
-      <a class="btn" href="#shop">Shop the collection</a>
-    </div>
-    <div class="stack" aria-hidden="true">
-      <svg class="a" viewBox="0 0 120 120" fill="#F2A900"><use href="#hood"/></svg>
-      <svg class="b" viewBox="0 0 120 120" fill="#E9B8B0"><use href="#tee"/></svg>
-      <svg class="c" viewBox="0 0 120 120" fill="#F4F6FB"><use href="#pants"/></svg>
+  <div class="announce">
+    <div class="container">
+      <span>Free delivery across Nepal on orders over Rs. 5,000</span>
+      <div class="announce-links"><a href="#">Store locator</a><a href="#">Track order</a><a href="#">Help</a></div>
     </div>
   </div>
-</div>
-<div class="strip"><div class="wrap"><span>Free delivery over Rs 5,000</span><span>7-day easy returns</span><span>Cash on delivery available</span></div></div>
-
-<section id="shop">
-  <div class="wrap">
-    <h2>The collection</h2>
-    <p class="sub">Eight pieces, each in one strong colour. Pick a size and add it to your cart.</p>
-    <div class="tabs" role="group" aria-label="Filter products" id="tabs"></div>
-    <div class="grid" id="grid"></div>
-  </div>
-</section>
-
-<section class="story" id="story">
-  <div class="wrap">
-    <div>
-      <h2>Clothes that earn their place in your wardrobe.</h2>
-      <p class="sub" style="color:#3b2e2c">We keep the range small so every piece gets the right fabric, the right fit and a colour you won’t see on everyone else.</p>
+  <header>
+    <div class="container nav">
+      <nav class="nav-menu">
+        <button class="icon-btn mobile-menu" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+        <a href="#shop">New In</a><a href="#shop">Women</a><a href="#shop">Men</a><a href="#campaign">Collections</a>
+      </nav>
+      <a class="logo" href="#">SAFFRON <span>ROW</span></a>
+      <div class="nav-actions">
+        <button class="icon-btn search-btn" id="openSearch" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+        <button class="icon-btn" aria-label="Account"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.5"/><path d="M5 21c.7-4.2 3-6 7-6s6.3 1.8 7 6"/></svg></button>
+        <button class="icon-btn" id="openCart" aria-label="Open cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h2l2.2 10h9.6l2.2-7H6"/><circle cx="9" cy="19" r="1"/><circle cx="17" cy="19" r="1"/></svg><span class="cart-count" id="cartCount">0</span></button>
+      </div>
     </div>
-    <div class="promises">
-      <div><b>Heavy cotton</b><br>240 gsm fabric that keeps its shape after many washes.</div>
-      <div><b>Fit you can trust</b><br>Each product page lists sizes, so you order once.</div>
-      <div><b>Simple returns</b><br>Not right? Send it back within 7 days.</div>
+  </header>
+
+  <main>
+    <section class="hero" style="padding:0">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="hero-copy-inner">
+            <span class="eyebrow">The New Season</span>
+            <h1>Modern<br>essentials.</h1>
+            <p>Thoughtfully designed clothing for every day. Relaxed silhouettes, rich textures and effortless style.</p>
+            <div class="hero-actions"><a class="btn btn-dark" href="#shop">Shop women</a><a class="btn btn-light" href="#shop">Shop men</a></div>
+          </div>
+        </div>
+        <div class="hero-media"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=80" alt="Woman wearing modern neutral fashion" fetchpriority="high" decoding="async"></div>
+      </div>
+    </section>
+
+    <div class="benefits">
+      <div class="container">
+        <div class="benefit">Free shipping over Rs. 5,000</div>
+        <div class="benefit">Easy 7-day exchange</div>
+        <div class="benefit">Secure checkout</div>
+        <div class="benefit">Cash on delivery</div>
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="section-heading"><div><span class="eyebrow">Curated for you</span><h2>Shop by category</h2></div><a class="text-link" href="#shop">View all</a></div>
+        <div class="category-grid">
+          <a class="category" href="#shop" data-category="Women"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80" alt="Women's clothing collection" loading="lazy" decoding="async"><div class="category-copy"><strong>For Her</strong><span>Shop women →</span></div></a>
+          <a class="category" href="#shop" data-category="Men"><img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=900&q=80" alt="Men's clothing collection" loading="lazy" decoding="async"><div class="category-copy"><strong>For Him</strong><span>Shop men →</span></div></a>
+          <a class="category" href="#shop" data-category="Outerwear"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80" alt="New fashion collection" loading="lazy" decoding="async"><div class="category-copy"><strong>New Season</strong><span>Explore now →</span></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop" style="padding-top:20px">
+      <div class="container">
+        <div class="section-heading"><div><span class="eyebrow">Just arrived</span><h2>New &amp; noteworthy</h2></div></div>
+        <div class="shop-toolbar"><div class="tabs" id="tabs"></div><select class="sort-select" id="sortSelect" aria-label="Sort products"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></div>
+        <div class="product-grid" id="productGrid"></div>
+      </div>
+    </section>
+
+    <section class="campaign" id="campaign">
+      <div class="container campaign-inner">
+        <div class="campaign-copy"><div class="campaign-copy-inner"><span class="eyebrow" style="color:#f5b14b">The autumn edit</span><h2>Layers for<br>cooler days.</h2><p>Build your everyday wardrobe with versatile jackets, relaxed knits and timeless trousers.</p><a class="btn" href="#shop">Explore the edit</a></div></div>
+        <div class="campaign-media"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=80" alt="Autumn fashion edit" loading="lazy" decoding="async"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-heading"><div><span class="eyebrow">The Saffron Row promise</span><h2>Better in every detail</h2></div></div>
+        <div class="trust-grid">
+          <article class="trust-card"><div class="trust-icon">✓</div><strong>Quality assured</strong><p>Carefully selected fabrics, consistent stitching and reliable finishing across every collection.</p></article>
+          <article class="trust-card"><div class="trust-icon">↺</div><strong>Easy exchanges</strong><p>Changed your mind? Exchange unused pieces within 7 days with their original tags attached.</p></article>
+          <article class="trust-card"><div class="trust-icon">♧</div><strong>Personal support</strong><p>Get fit and order help directly from our team through WhatsApp, every day.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container faq-grid">
+        <div><span class="eyebrow">Need help?</span><h2>Frequently asked questions</h2></div>
+        <div>
+          <details class="faq-item"><summary>How can I place an order?</summary><p>Choose your size and add items to your bag. Enter your name and delivery address, then send the order directly through WhatsApp.</p></details>
+          <details class="faq-item"><summary>Where do you deliver?</summary><p>We deliver across Nepal. Delivery charges and estimated arrival time are confirmed when you place your order.</p></details>
+          <details class="faq-item"><summary>What payment methods are available?</summary><p>Cash on delivery is available for eligible locations. Bank transfer and digital payment options can also be arranged through WhatsApp.</p></details>
+          <details class="faq-item"><summary>How do exchanges work?</summary><p>Contact us within 7 days of delivery with your order details. Items must be unused and returned with their original tags.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container">
+        <span class="eyebrow">Stay connected</span><h2>Get 10% off your first order</h2><p>Join our list for new arrivals, styling notes and private offers.</p>
+        <form class="signup" id="signup"><input type="email" placeholder="Email address" aria-label="Email address" required><button type="submit">Subscribe →</button></form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><a class="logo" href="#">SAFFRON <span>ROW</span></a><p>Contemporary everyday clothing made for comfort, confidence and a life in motion.</p></div>
+        <div><h3>Shop</h3><ul><li><a href="#shop">New arrivals</a></li><li><a href="#shop">Women</a></li><li><a href="#shop">Men</a></li><li><a href="#shop">Accessories</a></li></ul></div>
+        <div><h3>Help</h3><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Size guide</a></li><li><a href="#">Contact us</a></li></ul></div>
+        <div><h3>Follow</h3><ul><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">TikTok</a></li><li><a href="#" id="waFooter">WhatsApp</a></li></ul></div>
+      </div>
+      <div class="copyright"><span>© <span id="year"></span> Saffron Row. All rights reserved.</span><span>Privacy · Terms · Nepal</span></div>
+    </div>
+  </footer>
+
+  <div id="searchOverlay" aria-hidden="true">
+    <div class="search-shell">
+      <div class="search-top"><strong>Search Saffron Row</strong><button class="search-close" id="closeSearch" aria-label="Close search">×</button></div>
+      <div class="search-box"><input id="searchInput" type="search" placeholder="What are you looking for?" autocomplete="off"><button id="clearSearch" type="button">Clear</button></div>
+      <div id="searchResults"></div>
     </div>
   </div>
-</section>
-</main>
 
-<footer id="contact">
-  <div class="wrap">
-    <div><b style="color:#fff">Saffron Row</b><br>Orders and questions: <a id="waLink" href="#">WhatsApp us</a></div>
-    <div>© <span id="yr"></span> Saffron Row. All rights reserved.</div>
+  <div id="productModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Choose product size">
+      <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+      <img id="modalImage" src="" alt="">
+      <div class="modal-info"><span class="eyebrow">Select size</span><h3 id="modalName"></h3><div class="modal-price" id="modalPrice"></div><span class="size-label">Available sizes</span><div class="size-options" id="sizeOptions"><button class="active" data-size="S">S</button><button data-size="M">M</button><button data-size="L">L</button><button data-size="XL">XL</button></div><button class="btn btn-dark" id="modalAdd">Add to bag</button></div>
+    </div>
   </div>
-</footer>
 
-<div id="veil"></div>
-<aside id="drawer" aria-label="Shopping cart" aria-hidden="true">
-  <div class="dh">Your cart <button id="closeCart" aria-label="Close cart">×</button></div>
-  <div id="items"></div>
-  <div class="foot">
-    <div class="total"><span>Total</span><span id="total">Rs 0</span></div>
-    <input id="cname" placeholder="Your name" autocomplete="name">
-    <input id="caddr" placeholder="Delivery address and phone" autocomplete="street-address">
-    <button class="btn" id="checkout">Place order on WhatsApp</button>
-    <p class="note">Your order opens as a WhatsApp message to us. We confirm the price and delivery, and you pay on delivery or by transfer.</p>
-  </div>
-</aside>
+  <div id="toast" role="status"></div>
+  <div id="veil"></div>
+  <aside id="drawer" aria-label="Shopping cart" aria-hidden="true">
+    <div class="drawer-head"><strong>Your bag</strong><button id="closeCart" aria-label="Close cart">×</button></div>
+    <div id="cartItems"></div>
+    <div class="drawer-foot">
+      <div class="total"><span>Subtotal</span><span id="cartTotal">Rs. 0</span></div>
+      <div class="checkout-fields"><input id="customerName" placeholder="Your name" autocomplete="name"><input id="customerAddress" placeholder="Delivery address and phone"></div>
+      <button class="btn btn-dark" id="checkout">Checkout on WhatsApp</button>
+    </div>
+  </aside>
 
-<script>
-/* ===== EDIT THESE ===== */
-var CONFIG = {
-  currency: 'Rs ',
-  whatsapp: '9779800000000'   /* your number with country code, no + or spaces */
-};
-var PRODUCTS = [
-  {id:1,name:'Saffron Boxy Tee',cat:'Tops',price:1800,bg:'#1B2250',fill:'#F2A900',shape:'tee',tag:'240 gsm cotton'},
-  {id:2,name:'Indigo Heavy Tee',cat:'Tops',price:1800,bg:'#F2A900',fill:'#1B2250',shape:'tee',tag:'240 gsm cotton'},
-  {id:3,name:'Rose Everyday Tee',cat:'Tops',price:1600,bg:'#3F5B4A',fill:'#E9B8B0',shape:'tee',tag:'Soft combed cotton'},
-  {id:4,name:'Saffron Hoodie',cat:'Outerwear',price:4200,bg:'#1B2250',fill:'#F2A900',shape:'hood',tag:'Brushed fleece inside'},
-  {id:5,name:'Moss Zip Jacket',cat:'Outerwear',price:5600,bg:'#E9B8B0',fill:'#3F5B4A',shape:'coat',tag:'Water-resistant shell'},
-  {id:6,name:'Indigo Work Trousers',cat:'Bottoms',price:3600,bg:'#F2A900',fill:'#1B2250',shape:'pants',tag:'Straight, mid-rise'},
-  {id:7,name:'Bone Relaxed Trousers',cat:'Bottoms',price:3400,bg:'#1B2250',fill:'#F4F6FB',shape:'pants',tag:'Relaxed leg'},
-  {id:8,name:'Rose Oversized Hoodie',cat:'Outerwear',price:4400,bg:'#3F5B4A',fill:'#E9B8B0',shape:'hood',tag:'Oversized fit'}
-];
-/* ====================== */
-
-var cart = [];
-try { cart = JSON.parse(localStorage.getItem('sr_cart') || '[]'); } catch(e) { cart = []; }
-function save(){ try { localStorage.setItem('sr_cart', JSON.stringify(cart)); } catch(e) {} }
-function money(n){ return CONFIG.currency + n.toLocaleString('en-US'); }
-function $(id){ return document.getElementById(id); }
-
-var cats = ['All','Tops','Bottoms','Outerwear'], active = 'All';
-function renderTabs(){
-  $('tabs').innerHTML = cats.map(function(c){
-    return '<button class="tab" aria-pressed="'+(c===active)+'" data-c="'+c+'">'+c+'</button>';
-  }).join('');
-  Array.prototype.forEach.call(document.querySelectorAll('.tab'), function(b){
-    b.onclick = function(){ active = b.dataset.c; renderTabs(); renderGrid(); };
-  });
-}
-function renderGrid(){
-  $('grid').innerHTML = PRODUCTS.filter(function(p){ return active==='All' || p.cat===active; }).map(function(p){
-    return '<article class="card"><div class="art" style="background:'+p.bg+'"><svg viewBox="0 0 120 120" fill="'+p.fill+'" role="img" aria-label="'+p.name+'"><use href="#'+p.shape+'"/></svg></div>'+
-      '<div class="info"><div class="row"><span class="name">'+p.name+'</span><span class="price">'+money(p.price)+'</span></div>'+
-      '<span class="tag">'+p.tag+'</span>'+
-      '<label class="tag" for="s'+p.id+'">Size</label><select id="s'+p.id+'"><option>S</option><option selected>M</option><option>L</option><option>XL</option></select>'+
-      '<button class="add" data-id="'+p.id+'">Add to cart</button></div></article>';
-  }).join('');
-  Array.prototype.forEach.call(document.querySelectorAll('.add'), function(b){
-    b.onclick = function(){ addToCart(+b.dataset.id, $('s'+b.dataset.id).value); b.textContent = 'Added'; setTimeout(function(){ b.textContent = 'Add to cart'; }, 900); };
-  });
-}
-function addToCart(id, size){
-  var f = cart.filter(function(i){ return i.id===id && i.size===size; })[0];
-  if (f) f.qty++; else cart.push({id:id,size:size,qty:1});
-  save(); renderCart();
-}
-function change(idx, d){
-  cart[idx].qty += d;
-  if (cart[idx].qty < 1) cart.splice(idx,1);
-  save(); renderCart();
-}
-function prod(id){ return PRODUCTS.filter(function(p){ return p.id===id; })[0]; }
-function renderCart(){
-  var n = 0, t = 0;
-  cart.forEach(function(i){ n += i.qty; t += i.qty * prod(i.id).price; });
-  $('count').textContent = n;
-  $('total').textContent = money(t);
-  $('items').innerHTML = cart.length ? cart.map(function(i, idx){
-    var p = prod(i.id);
-    return '<div class="item"><div><b>'+p.name+'</b><br><span class="tag">Size '+i.size+' · '+money(p.price)+'</span>'+
-      '<div class="qty"><button aria-label="Fewer" data-i="'+idx+'" data-d="-1">−</button><span>'+i.qty+'</span><button aria-label="More" data-i="'+idx+'" data-d="1">+</button></div></div>'+
-      '<b>'+money(p.price*i.qty)+'</b></div>';
-  }).join('') : '<p class="empty">Your cart is empty. Add a piece from the collection.</p>';
-  Array.prototype.forEach.call(document.querySelectorAll('.qty button'), function(b){
-    b.onclick = function(){ change(+b.dataset.i, +b.dataset.d); };
-  });
-}
-function openCart(o){
-  $('drawer').classList.toggle('open', o);
-  $('veil').classList.toggle('open', o);
-  $('drawer').setAttribute('aria-hidden', String(!o));
-}
-$('openCart').onclick = function(){ openCart(true); };
-$('closeCart').onclick = $('veil').onclick = function(){ openCart(false); };
-document.addEventListener('keydown', function(e){ if (e.key==='Escape') openCart(false); });
-
-$('checkout').onclick = function(){
-  if (!cart.length) { alert('Your cart is empty. Add a piece first.'); return; }
-  var name = $('cname').value.trim(), addr = $('caddr').value.trim();
-  if (!name || !addr) { alert('Enter your name and delivery address so we can send your order.'); return; }
-  var total = 0;
-  var lines = cart.map(function(i){ var p = prod(i.id); total += p.price*i.qty; return '- '+p.name+' (size '+i.size+') x'+i.qty+' = '+money(p.price*i.qty); });
-  var msg = 'New order from '+name+'\n'+lines.join('\n')+'\nTotal: '+money(total)+'\nDelivery: '+addr;
-  window.open('https://wa.me/'+CONFIG.whatsapp+'?text='+encodeURIComponent(msg), '_blank');
-};
-$('waLink').href = 'https://wa.me/'+CONFIG.whatsapp;
-$('yr').textContent = new Date().getFullYear();
-renderTabs(); renderGrid(); renderCart();
-</script>
+  <script>
+    var CONFIG = { currency: "Rs. ", whatsapp: "9779800000000" };
+    var products = [
+      {id:1,name:"Textured Half-Zip Sweater",category:"Women",price:3698,badge:"New",meta:"Soft knit · 4 colours",image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=85"},
+      {id:2,name:"Relaxed Waffle Shirt",category:"Men",price:1998,badge:"Best seller",meta:"Cotton blend · Regular fit",image:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=85"},
+      {id:3,name:"Oversized Cotton T-Shirt",category:"Women",price:1278,badge:"New",meta:"Heavy cotton · 5 colours",image:"https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=85"},
+      {id:4,name:"Tailored Pull-On Pants",category:"Men",price:2998,badge:"Limited",meta:"Stretch twill · Relaxed fit",image:"https://images.unsplash.com/photo-1506629082955-511b1aa562c8?auto=format&fit=crop&w=800&q=85"},
+      {id:5,name:"Utility Puffer Jacket",category:"Outerwear",price:3978,badge:"New",meta:"Warm fill · Water resistant",image:"https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=800&q=85"},
+      {id:6,name:"Classic Denim Jacket",category:"Outerwear",price:4478,badge:"New",meta:"Rigid denim · Relaxed fit",image:"https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&w=800&q=85"},
+      {id:7,name:"Cotton Twill Pants",category:"Men",price:2478,badge:"Popular",meta:"Straight fit · Cotton twill",image:"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=800&q=85"},
+      {id:8,name:"Soft Fleece Pullover",category:"Women",price:1898,badge:"New",meta:"Brushed fleece · Relaxed fit",image:"https://images.unsplash.com/photo-1578932750294-f5075e85f44a?auto=format&fit=crop&w=800&q=85"}
+    ];
+    var cart = [];
+    var wishlist = [];
+    try { cart = JSON.parse(localStorage.getItem("saffron_cart") || "[]"); } catch(e) {}
+    try { wishlist = JSON.parse(localStorage.getItem("saffron_wishlist") || "[]"); } catch(e) {}
+    var modalProductId = null;
+    var selectedSize = "S";
+    var active = "All";
+    var categories = ["All","Women","Men","Outerwear"];
+    function money(n) { return CONFIG.currency + n.toLocaleString("en-US"); }
+    function el(id) { return document.getElementById(id); }
+    function saveCart() { try { localStorage.setItem("saffron_cart", JSON.stringify(cart)); } catch(e) {} }
+    function renderTabs() {
+      el("tabs").innerHTML = categories.map(function(c) { return '<button class="tab '+(c===active?'active':'')+'" data-cat="'+c+'">'+c+'</button>'; }).join("");
+      document.querySelectorAll(".tab").forEach(function(b) { b.onclick = function(){ active=b.dataset.cat; renderTabs(); renderProducts(); }; });
+    }
+    function renderProducts() {
+      var list = products.filter(function(p){ return active==="All" || p.category===active; });
+      var sort = el("sortSelect") ? el("sortSelect").value : "featured";
+      if(sort==="low") list.sort(function(a,b){ return a.price-b.price; });
+      if(sort==="high") list.sort(function(a,b){ return b.price-a.price; });
+      el("productGrid").innerHTML = list.map(function(p) {
+        var saved = wishlist.indexOf(p.id)!==-1;
+        return '<article class="product-card"><div class="product-image"><img src="'+p.image+'" alt="'+p.name+'" loading="lazy"><span class="badge">'+p.badge+'</span><button class="heart" data-id="'+p.id+'" aria-label="Save '+p.name+'" style="'+(saved?'color:#e4572e':'')+'"><svg viewBox="0 0 24 24" fill="'+(saved?'currentColor':'none')+'" stroke="currentColor" stroke-width="1.8"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.7 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button><button class="quick-add" data-id="'+p.id+'">Select size</button></div><div class="product-info"><span class="product-name">'+p.name+'</span><span class="product-price">'+money(p.price)+'</span><span class="product-meta">'+p.meta+'</span></div></article>';
+      }).join("");
+      document.querySelectorAll(".quick-add").forEach(function(b) { b.onclick=function(){ openProductModal(+b.dataset.id); }; });
+      document.querySelectorAll(".heart").forEach(function(b) { b.onclick=function(){ toggleWishlist(+b.dataset.id); }; });
+    }
+    function productById(id) { return products.filter(function(p){ return p.id===id; })[0]; }
+    function addToCart(id, size) {
+      size = size || "M";
+      var item = cart.filter(function(i){ return i.id===id && i.size===size; })[0];
+      if(item) item.qty++; else cart.push({id:id,qty:1,size:size});
+      saveCart(); renderCart();
+    }
+    function renderCart() {
+      var count=0,total=0;
+      cart.forEach(function(i){ count+=i.qty; total+=i.qty*productById(i.id).price; });
+      el("cartCount").textContent=count;
+      el("cartTotal").textContent=money(total);
+      el("cartItems").innerHTML=cart.length ? cart.map(function(i,idx){
+        var p=productById(i.id);
+        return '<div class="cart-item"><img src="'+p.image+'" alt=""><div><div class="cart-item-name">'+p.name+'</div><div class="cart-item-meta">Size: '+i.size+' · '+p.category+'</div><div class="qty"><button data-i="'+idx+'" data-d="-1">−</button><span>'+i.qty+'</span><button data-i="'+idx+'" data-d="1">+</button></div></div><span class="cart-item-price">'+money(p.price*i.qty)+'</span></div>';
+      }).join("") : '<div class="empty">Your bag is empty</div>';
+      document.querySelectorAll(".qty button").forEach(function(b){ b.onclick=function(){ var i=+b.dataset.i,d=+b.dataset.d; cart[i].qty+=d;if(cart[i].qty<1)cart.splice(i,1);saveCart();renderCart(); }; });
+    }
+    function openCart(open) { el("drawer").classList.toggle("open",open); el("veil").classList.toggle("open",open); el("drawer").setAttribute("aria-hidden",String(!open)); }
+    function showToast(message) {
+      el("toast").textContent = message;
+      el("toast").classList.add("show");
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(function(){ el("toast").classList.remove("show"); }, 2200);
+    }
+    function toggleWishlist(id) {
+      var index = wishlist.indexOf(id);
+      if(index===-1) wishlist.push(id); else wishlist.splice(index,1);
+      try { localStorage.setItem("saffron_wishlist", JSON.stringify(wishlist)); } catch(e) {}
+      showToast(index===-1 ? "Saved to your wishlist" : "Removed from your wishlist");
+      renderProducts();
+    }
+    function openProductModal(id) {
+      var p = productById(id);
+      modalProductId = id;
+      selectedSize = "S";
+      el("modalImage").src = p.image;
+      el("modalImage").alt = p.name;
+      el("modalName").textContent = p.name;
+      el("modalPrice").textContent = money(p.price);
+      el("sizeOptions").querySelectorAll("button").forEach(function(b){ b.classList.toggle("active", b.dataset.size==="S"); });
+      el("productModal").classList.add("open");
+      el("productModal").setAttribute("aria-hidden","false");
+    }
+    function closeProductModal() {
+      el("productModal").classList.remove("open");
+      el("productModal").setAttribute("aria-hidden","true");
+    }
+    el("closeModal").onclick = closeProductModal;
+    el("productModal").onclick = function(e){ if(e.target===el("productModal")) closeProductModal(); };
+    el("sizeOptions").onclick = function(e){
+      if(!e.target.dataset.size) return;
+      selectedSize = e.target.dataset.size;
+      el("sizeOptions").querySelectorAll("button").forEach(function(b){ b.classList.toggle("active", b===e.target); });
+    };
+    el("modalAdd").onclick = function(){
+      addToCart(modalProductId, selectedSize);
+      closeProductModal();
+      openCart(true);
+      showToast("Added to your bag");
+    };
+    function openSearch(open) {
+      el("searchOverlay").classList.toggle("open",open);
+      el("searchOverlay").setAttribute("aria-hidden",String(!open));
+      if(open){ el("searchInput").value=""; renderSearch(""); el("searchInput").focus(); }
+    }
+    function renderSearch(query) {
+      var q = query.trim().toLowerCase();
+      var matches = products.filter(function(p){ return !q || (p.name+" "+p.category+" "+p.meta).toLowerCase().indexOf(q)!==-1; }).slice(0,6);
+      el("searchResults").innerHTML = matches.length ? matches.map(function(p){
+        return '<div class="search-result" data-id="'+p.id+'"><img src="'+p.image+'" alt="'+p.name+'"><span>'+p.name+'</span></div>';
+      }).join("") : '<p style="color:#686868">No products found.</p>';
+      el("searchResults").querySelectorAll(".search-result").forEach(function(card){
+        card.onclick=function(){ openSearch(false); openProductModal(+card.dataset.id); document.getElementById("shop").scrollIntoView(); };
+      });
+    }
+    el("openSearch").onclick = function(){ openSearch(true); };
+    el("closeSearch").onclick = function(){ openSearch(false); };
+    el("searchInput").oninput = function(){ renderSearch(el("searchInput").value); };
+    el("clearSearch").onclick = function(){ el("searchInput").value=""; el("searchInput").focus(); renderSearch(""); };
+    el("openCart").onclick=function(){ openCart(true); };
+    el("closeCart").onclick=function(){ openCart(false); };
+    el("veil").onclick=function(){ openCart(false); };
+    document.addEventListener("keydown",function(e){ if(e.key==="Escape"){ openCart(false); openSearch(false); closeProductModal(); } });
+    el("checkout").onclick=function(){
+      if(!cart.length){ alert("Your bag is empty."); return; }
+      var name=el("customerName").value.trim(),address=el("customerAddress").value.trim();
+      if(!name||!address){ alert("Please enter your name and delivery address."); return; }
+      var total=0,lines=cart.map(function(i){ var p=productById(i.id);total+=p.price*i.qty;return "- "+p.name+" (Size "+i.size+") x"+i.qty+" = "+money(p.price*i.qty); });
+      var message="New order from "+name+"\n"+lines.join("\n")+"\nTotal: "+money(total)+"\nDelivery: "+address;
+      window.open("https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(message),"_blank");
+    };
+    el("signup").onsubmit=function(e){ e.preventDefault(); alert("Thank you — you’re on the list."); el("signup").reset(); };
+    el("sortSelect").onchange = renderProducts;
+    document.querySelectorAll(".category[data-category]").forEach(function(category){
+      category.onclick=function(){ active=category.dataset.category; renderTabs(); renderProducts(); };
+    });
+    el("year").textContent=new Date().getFullYear();
+    el("waFooter").href="https://wa.me/"+CONFIG.whatsapp;
+    renderTabs(); renderProducts(); renderCart();
+  </script>
 </body>
 </html>
